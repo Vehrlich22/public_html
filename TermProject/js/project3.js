@@ -28,6 +28,7 @@ buildYears() {
 */
 
 $(document).ready(() => {
+	$("#requirements-accordion").accordion();
 	generatePlan();
 });
 
