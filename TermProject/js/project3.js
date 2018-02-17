@@ -1,3 +1,32 @@
+/*
+buildYears() {
+	this.years = this.initializeEmptyYearsStructure();
+	
+	let skipToNextCourse;
+	for (let course of this.courses) {
+		skipToNextCourse = false;
+		for (let year of this.years) {
+			if (course.year === year.year && course.term === this.TERM_NAMES.FALL) {
+				this.addCourseToYearDuringTerm(course, year, this.TERM_NAMES.FALL);
+				skipToNextCourse = true;
+			} else if (course.year - 1 === year.year) {
+				if (course.term === this.TERM_NAMES.SPRING) {
+					this.addCourseToYearDuringTerm(course, year, this.TERM_NAMES.SPRING);
+					skipToNextCourse = true;
+				} else if (course.term === this.TERM_NAMES.SUMMER) {
+					this.addCourseToYearDuringTerm(course, year, this.TERM_NAMES.SUMMER);
+					skipToNextCourse = true;
+				}
+			}
+			
+			if (skipToNextCourse) {
+				break;
+			}
+		}
+	}
+}
+*/
+
 function validateSubmission() {
     var sixteen = validateSixteen();
     var elephant = validateElephant();
