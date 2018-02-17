@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+	<html>
+        <head>
+            <link rel="stylesheet" type="text/css" href="css/project2.css">
+            <script src="js/project2.js"></script>
+        </head>
+	
+		<body onload="generatePlan()">
+			<div class="content">
+            
+                <ul class="topnav">
+                <li><a href="../cs3220.html">Home</a></li>
+                <li><a href="http://judah.cedarville.edu/peopleschoice/index.php">People's Choice</a></li>
+                <li class="right"><a href="../about.html">About</a></li>
+                <li>
+                    <div class="projects">
+                        <button class="projects_button">Projects</button>
+                        <div class="projects_list">
+                            <a href="../project1.html">Project 1</a>
+                            <a class="active" href="../project2.html">Project 2</a>
+                            <a href="../project3.html">Project 3</a>
+                            <a href="../project4.html">Project 4</a>
+                            <a href="../project5.html">Project 5</a>
+                            <a href="../project6.html">Project 6</a>
+                            <a href="../project7.html">Project 7</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+				
+                <div class="requirements">
+                    <div class="header" align="center">Requirements</div>
+                    <div class="section" id="form_section">
+                        <div class="title" align="left">College Readiness Test </div>
+                        <div class="divider"></div>
+                        
+                        <p class="question">What is 2^4?</p>
+                        <input type="text" size=2 id="sixteen" value="" onchange="validateSixteen()" onsubmit="validateSixteen()"></input>
+                        <p class="error" id="sixteen_error"></p>
+                        <p class="question">How do you spell elephant?</p>
+                        <input type="text" size=8 id="elephant" value="" onchange="validateElephant()" onsubmit=="validateElephant()"></input>
+                        <p class="error" id="elephant_error"></p>
+                        <p class="question">What is 911's phone number?</p>
+                        <input type="text" size=3 id="911" value="" onchange="validate911()" onsubmit="validate911()"></input>
+                        <p class="error" id="911_error"></p>
+                        <input type="submit" id="submit_form" value="Submit" onclick="validateSubmission()"/>
+                    </div>
+                </div>
+                
+                <div id="plan"></div>
+            
+                <div class="status">
+                    <div class="header" align="center">Validation Status</div>
+                    <div class="snape">
+                        <img src="img/snape.jpg"></img>
+                    </div>
+                </div>
+                
+                <div class="finder">
+                    <div class="header" align="center">Course Finder</div>
+                </div>
+			</div>
+		</body>
+	</html>

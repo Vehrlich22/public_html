@@ -1,0 +1,138 @@
+@keyframes spin {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+body {
+    margin: 0;
+}
+
+html { 
+    background: url(../img/geoff_bryant_field.jpg) no-repeat center center fixed; 
+    background-size: cover;
+}
+
+ul.topnav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+ul.topnav li {
+    float: left;
+    border-right: 1px solid #bbb;
+}
+
+ul.topnav li:nth-child(3) {
+    border-right: none;
+}
+
+ul.topnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active){
+    background-color: #111;
+}
+
+ul.topnav li a.active {
+    background-color: #4CAF50;
+}
+
+ul.topnav li.right {
+    float: right;
+}
+
+.projects {
+    float: left;
+    overflow: hidden;
+}
+
+.projects .projects_button {
+    font-size: 16px;    
+    border: none;
+    outline: none;
+    color: white;
+    padding: 14px 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.projects_list {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.projects_list a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.projects_list a:hover {
+    background-color: #111;
+}
+
+.projects:hover .projects_list {
+    display: block;
+}
+
+.about_me {
+    border-radius: 10px;
+    padding: 0px 10px;
+    margin: 0px 10px;
+    background: black;
+    color: white;
+    opacity: 0.75;
+    filter: alpha(opacity=50);
+}
+
+.garlic {
+    border-radius: 10px;
+    display: block;
+    padding: 5px 10px 2px 10px;
+    margin: 0px 10px;
+	min-width: 210px;
+	min-height: 210px;
+    background: black;
+    text-align: center;
+    color: white;
+    opacity: 0.75;
+}
+
+.garlic img.garlicoin {
+    max-width: 100%;
+	max-height: 100%;
+	animation: spin 4s linear infinite;
+}
+
+@media only screen and (max-width: 600px){
+    ul.topnav li.right, 
+    ul.topnav li {
+        float: none;
+    }
+    .projects {
+        width: 100%;
+    }
+    .projects_button {
+        width: 100%;
+    }
+    .projects_list {
+        width: 100%;
+    }
+}
