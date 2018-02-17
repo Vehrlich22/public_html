@@ -1,36 +1,7 @@
-/*
-buildYears() {
-	this.years = this.initializeEmptyYearsStructure();
-	
-	let skipToNextCourse;
-	for (let course of this.courses) {
-		skipToNextCourse = false;
-		for (let year of this.years) {
-			if (course.year === year.year && course.term === this.TERM_NAMES.FALL) {
-				this.addCourseToYearDuringTerm(course, year, this.TERM_NAMES.FALL);
-				skipToNextCourse = true;
-			} else if (course.year - 1 === year.year) {
-				if (course.term === this.TERM_NAMES.SPRING) {
-					this.addCourseToYearDuringTerm(course, year, this.TERM_NAMES.SPRING);
-					skipToNextCourse = true;
-				} else if (course.term === this.TERM_NAMES.SUMMER) {
-					this.addCourseToYearDuringTerm(course, year, this.TERM_NAMES.SUMMER);
-					skipToNextCourse = true;
-				}
-			}
-			
-			if (skipToNextCourse) {
-				break;
-			}
-		}
-	}
-}
-*/
-
 function validateSubmission() {
-    var sixteen = validateSixteen();
-    var elephant = validateElephant();
-    var nine11 = validate911();
+    let sixteen = validateSixteen();
+    let elephant = validateElephant();
+    let nine11 = validate911();
     if (!sixteen) {
         document.getElementById('sixteen').focus();
         document.getElementById('sixteen').select();
@@ -44,12 +15,12 @@ function validateSubmission() {
 }
 
 function validateSixteen() {
-    var number = document.getElementById('sixteen');
+    let number = document.getElementById('sixteen');
     if (number.value == '16') {
-        document.getElementById('sixteen_error').innerHTML = " ";
+        document.getElementById('sixteen_error').innerHTML = ' ';
         return true;
     } else {
-        document.getElementById('sixteen_error').innerHTML = "Enter the correct number";
+        document.getElementById('sixteen_error').innerHTML = 'Enter the correct number';
         number.focus();
         number.select();
         return false;
@@ -57,12 +28,12 @@ function validateSixteen() {
 }
 
 function validateElephant() {
-    var spelling = document.getElementById('elephant');
+    let spelling = document.getElementById('elephant');
     if (spelling.value == 'elephant') {
-        document.getElementById('elephant_error').innerHTML = " ";
+        document.getElementById('elephant_error').innerHTML = ' ';
         return true;
     } else {
-        document.getElementById('elephant_error').innerHTML = "Enter the correct spelling";
+        document.getElementById('elephant_error').innerHTML = 'Enter the correct spelling';
         spelling.focus();
         spelling.select();
         return false;
@@ -70,12 +41,12 @@ function validateElephant() {
 }
 
 function validate911() {
-    var number = document.getElementById('911');
+    let number = document.getElementById('911');
     if (number.value == '911') {
-        document.getElementById('911_error').innerHTML = " ";
+        document.getElementById('911_error').innerHTML = ' ';
         return true;
     } else {
-        document.getElementById('911_error').innerHTML = "Enter the correct number";
+        document.getElementById('911_error').innerHTML = 'Enter the correct number';
         number.focus();
         number.select();
         return false;
@@ -83,59 +54,63 @@ function validate911() {
 }
 
 function generatePlan() {
-    var plan = new Plan("project2", 2018, "Computer Science", "Vance Ehrlich", "sp");
+    let plan = new Plan('project2', 2018, 'Computer Science', 'Vance Ehrlich', 'Spring');
     
-    plan.addCourse("CS-1210", "C++ Programing", "fa", 2015);
-    plan.addCourse("CS-1220", "Obj-Orient Design/C++", "sp", 2015);
-    plan.addCourse("CS-2210", "Data Struct Using Java", "fa", 2016);
-    plan.addCourse("EGCP-3210", "Computer Architecture", "sp", 2016);
-    plan.addCourse("CS-3410", "Algorithms", "fa", 2017);
-    plan.addCourse("CS-3310", "Operating Systems", "fa", 2017);
-    plan.addCourse("EGCP-4310", "Computer Networks", "fa", 2017);
-    plan.addCourse("CS-3220", "Web Applications", "sp", 2017);
-    plan.addCourse("CS-3350", "Foundtions Computer S", "sp", 2017);
-    plan.addCourse("CS-3610", "Database Org & Design", "sp", 2017);
-    plan.addCourse("CS-4810", "Software Engineering I", "fa", 2018);
-    plan.addCourse("CS-4820", "Software Engineering II", "sp", 2018);
-    plan.addCourse("CS-3510", "Compiler Theory & Prac", "sp", 2018);
+    plan.addCourse('CS-1210', 'C++ Programing', 'Fall', 2015, 0);
+    plan.addCourse('CS-1220', 'Obj-Orient Design/C++', 'Spring', 2016, 1);
+    plan.addCourse('CS-2210', 'Data Struct Using Java', 'Fall', 2016, 2);
+    plan.addCourse('EGCP-3210', 'Computer Architecture', 'Spring', 2017, 3);
+    plan.addCourse('CS-3410', 'Algorithms', 'Fall', 2017, 4);
+    plan.addCourse('CS-3310', 'Operating Systems', 'Fall', 2017, 5);
+    plan.addCourse('EGCP-4310', 'Computer Networks', 'Fall', 2017, 6);
+    plan.addCourse('CS-3220', 'Web Applications', 'Spring', 2018, 8);
+    plan.addCourse('CS-3350', 'Foundtions Computer S', 'Spring', 2018, 9);
+    plan.addCourse('CS-3610', 'Database Org & Design', 'Spring', 2018, 10);
+    plan.addCourse('CS-4810', 'Software Engineering I', 'Fall', 2018, 11);
+    plan.addCourse('CS-4820', 'Software Engineering II', 'Spring', 2019, 12);
+    plan.addCourse('CS-3510', 'Compiler Theory & Prac', 'Spring', 2019, 13);
+	
+	plan.convertYears();
     
-    var planDiv = document.getElementById('plan');
-    var html = "<div class=\"header\" align=\"center\">Academic Plan</div>";
+    let planDiv = document.getElementById('plan');
+    let html = '<div class=\'header\' align=\'center\'>Academic Plan</div>';
     
     for (var key in plan.years) {
-        var year = plan.years[key];
-        var nextYear= 1 + parseInt(key);
-        html += "<div class=\"section\">";
-            html += `<div class=\"year_header\" align=\"center\">${key} - ${nextYear}</div>`;
+        let year = plan.years[key];
+        var nextYear = 1 + parseInt(key);
+		console.log(key);
+		console.log(nextYear);
+        html += '<div class=\'section\'>';
+            html += `<div class=\'year_header\' align=\'center\'>${key} - ${nextYear}</div>`;
             
-            html += "<div class=\"divider\"></div>";
+            html += '<div class=\'divider\'></div>';
             
-            html += "<div class=\"semesters\">";
+            html += '<div class=\'terms\'>';
             
-                html += "<div class=\"semester\"><div class=\"semester_header\" align=\"center\">Fall</div>";
-                for (var key in year.fall) {
-                    html += "<p>" + year.fall[key].name + "</p>";
+                html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Fall</div>';
+                for (let key in year.fall) {
+                    html += '<p>' + year.fall[key].name + '</p>';
                 }
-                html += "</div>";
+                html += '</div>';
                 
-                html += "<div class=\"semester\"><div class=\"semester_header\" align=\"center\">Summer</div>";
-                for (var key in year.summer) {
-                    html += "<p>" + year.summer[key].name + "</p>";                
+                html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Summer</div>';
+                for (let key in year.summer) {
+                    html += '<p>' + year.summer[key].name + '</p>';                
                 }
-                html += "</div>";
+                html += '</div>';
                 
-                html += "<div class=\"semester\"><div class=\"semester_header\" align=\"center\">Spring</div>";
-                for (var key in year.spring) {
-                    html += "<p>" + year.spring[key].name + "</p>";                
+                html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Spring</div>';
+                for (let key in year.spring) {
+                    html += '<p>' + year.spring[key].name + '</p>';                
                 }
-                html += "</div>";
+                html += '</div>';
             
-            html += "</div>"; 
-        html += "</div>";
+            html += '</div>'; 
+        html += '</div>';
     }
     
     planDiv.innerHTML = html;
-    console.log("Plan Generated!");
+    console.log('Plan Generated!');
 }
 
 class Year {
@@ -148,11 +123,11 @@ class Year {
 }
 
 class Course {
-    constructor(id, name, semester, calendarYear) {
+    constructor(id, name, term, year) {
         this.id           = id;
         this.name         = name;
-        this.semester     = semester;
-        this.calendarYear = calendarYear;
+        this.term         = term;
+        this.year 		  = year;
     }
 }
 
@@ -168,21 +143,30 @@ class Plan {
         this.courses         = {};
     }
     
-    addCourse(id, name, semester, calendarYear) {
-        var course = new Course(id, name, semester, calendarYear);
-        this.courses[this.numberOfCourses] = course;
-        
-        if (this.years[calendarYear] == undefined) {
-            this.years[calendarYear] = new Year(calendarYear);
-        }
-        
-        if (semester == "sp") {
-            this.years[calendarYear].spring[this.numberOfCourses] = course;
-        } else if (semester == "su") {
-            this.years[calendarYear].summer[this.numberOfCourses] = course;
-        } else if (semester == "fa") {
-            this.years[calendarYear].fall[this.numberOfCourses] = course;
-        }
-        this.numberOfCourses += 1;
+    addCourse(id, name, term, calendarYear, pos) {
+        let course = new Course(id, name, term, calendarYear);
+        this.courses[pos] = course;
     }
+	
+	convertYears() {		
+		for (var key in this.courses) {
+			var course = this.courses[key];
+			if (course.term === 'Fall' && this.years[course.year] === undefined) {
+				console.log('Year: ' + parseInt(course.year) + ' added!');
+				this.years[course.year] = new Year(course.year);
+			} else if (this.years[course.year - 1] === undefined) {
+				this.years[course.year - 1] = new Year(course.year - 1);
+			}
+			
+			if (course.term === 'Fall') {
+				this.years[course.year].fall[this.numberOfCourses] = course;
+			} else if (course.term === 'Spring') {
+				this.years[course.year - 1].spring[this.numberOfCourses] = course;
+			} else if (course.term === 'Summer') {
+				this.years[course.year - 1].summer[this.numberOfCourses] = course;
+			}
+			
+			this.numberOfCourses++;
+		}
+	}
 }

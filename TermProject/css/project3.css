@@ -144,21 +144,21 @@ input {
 	border: 2px solid black;
 }
 
-.semesters {
+.terms {
     display: flex;
 	flex-direction: row;
 	margin: 0px 5px 5px 5px;
 	flex: 1;
 }
 
-.semester {
+.term {
 	margin: 0px 0px;
     min-height: 100px;
 	flex: 1;
 	color: #555555;
 }
 
-.semester p {
+.term p {
     margin: 0;
     padding: 0px 5px 0px 5px;
 }
@@ -214,7 +214,7 @@ img {
 	padding: 4px;
 }
 
-.semester_header {
+.term_header {
     flex: 1;
     max-height: 20px;
 	background: #2a623d;
@@ -239,7 +239,7 @@ img {
 }
 
 @media only screen and (max-width: 700px) {
-    .semesters {
+    .terms {
         flex-direction: column;
     }
 }
