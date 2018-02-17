@@ -113,20 +113,6 @@ ul.topnav li.right {
 	color: white
 }
 
-.question {
-    margin: 5px 0px 2px 5px;
-}
-
-input {
-    margin: 0px 5px 2px 5px;
-}
-
-.error {
-    margin: 0px 5px 5px 5px;
-    min-height: 12px;
-    color: red;
-}
-
 #plan {
 	display: flex;
 	flex-direction: column;

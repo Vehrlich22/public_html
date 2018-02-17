@@ -1,61 +1,30 @@
 $(document).ready(() => {
-	$("#requirements-accordion").accordion();
+	setupRequirementsAccordion();
 	generatePlan();
 });
 
-function validateSubmission() {
-    let sixteen = validateSixteen();
-    let elephant = validateElephant();
-    let nine11 = validate911();
-    if (!sixteen) {
-        document.getElementById('sixteen').focus();
-        document.getElementById('sixteen').select();
-    } else if (!elephant) {
-        document.getElementById('elephant').focus();
-        document.getElementById('elephant').select();
-    } else if (!nine11) {
-        document.getElementById('911').focus();
-        document.getElementById('911').select();
-    }
-}
-
-function validateSixteen() {
-    let number = document.getElementById('sixteen');
-    if (number.value == '16') {
-        document.getElementById('sixteen_error').innerHTML = ' ';
-        return true;
-    } else {
-        document.getElementById('sixteen_error').innerHTML = 'Enter the correct number';
-        number.focus();
-        number.select();
-        return false;
-    }    
-}
-
-function validateElephant() {
-    let spelling = document.getElementById('elephant');
-    if (spelling.value == 'elephant') {
-        document.getElementById('elephant_error').innerHTML = ' ';
-        return true;
-    } else {
-        document.getElementById('elephant_error').innerHTML = 'Enter the correct spelling';
-        spelling.focus();
-        spelling.select();
-        return false;
-    } 
-}
-
-function validate911() {
-    let number = document.getElementById('911');
-    if (number.value == '911') {
-        document.getElementById('911_error').innerHTML = ' ';
-        return true;
-    } else {
-        document.getElementById('911_error').innerHTML = 'Enter the correct number';
-        number.focus();
-        number.select();
-        return false;
-    } 
+function setupRequirementsAccordion() {
+	$.getJSON('requirements.txt', data => {
+		let categories = data.categories;
+		let html = '';
+		
+		// TODO: Build this as an unordered list
+		//       and get course info from catalog.
+		for (let key in categories) {
+			let category = categories[key];
+			html += `<h3>${key}</h3>`;
+			html += '<div>';
+			for (let course of category.courses) {
+				html += `<p>${course}</p>`;
+			}
+			html += '</div>';
+		}
+		
+		let requirementAccordion = $('#requirements-accordion');
+		requirementAccordion.append(html);
+		requirementAccordion.accordion();
+		
+	});
 }
 
 function generatePlan() {
