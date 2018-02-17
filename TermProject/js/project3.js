@@ -1,6 +1,8 @@
 $(document).ready(() => {
 	setupRequirementsAccordion();
-	generatePlan();
+	$.getJSON('getCombined.txt', (data) => {
+		generatePlanFromExisting(data.plan);
+	});
 });
 
 function setupRequirementsAccordion() {
@@ -27,22 +29,8 @@ function setupRequirementsAccordion() {
 	});
 }
 
-function generatePlan() {
-    let plan = new Plan('project2', 2018, 'Computer Science', 'Vance Ehrlich', 'Spring');
-    
-    plan.addCourse('CS-1210', 'C++ Programing', 'Fall', 2015, 0);
-    plan.addCourse('CS-1220', 'Obj-Orient Design/C++', 'Spring', 2016, 1);
-    plan.addCourse('CS-2210', 'Data Struct Using Java', 'Fall', 2016, 2);
-    plan.addCourse('EGCP-3210', 'Computer Architecture', 'Spring', 2017, 3);
-    plan.addCourse('CS-3410', 'Algorithms', 'Fall', 2017, 4);
-    plan.addCourse('CS-3310', 'Operating Systems', 'Fall', 2017, 5);
-    plan.addCourse('EGCP-4310', 'Computer Networks', 'Fall', 2017, 6);
-    plan.addCourse('CS-3220', 'Web Applications', 'Spring', 2018, 8);
-    plan.addCourse('CS-3350', 'Foundtions Computer S', 'Spring', 2018, 9);
-    plan.addCourse('CS-3610', 'Database Org & Design', 'Spring', 2018, 10);
-    plan.addCourse('CS-4810', 'Software Engineering I', 'Fall', 2018, 11);
-    plan.addCourse('CS-4820', 'Software Engineering II', 'Spring', 2019, 12);
-    plan.addCourse('CS-3510', 'Compiler Theory & Prac', 'Spring', 2019, 13);
+function generatePlanFromExisting(p) {
+	let plan = new Plan(p.name, p.student, p.major, p.catYear, p.currYear, p.currTerm, p.courses);
 	
 	plan.convertYears();
     
@@ -63,19 +51,19 @@ function generatePlan() {
             
                 html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Fall</div>';
                 for (let key in year.fall) {
-                    html += '<p>' + year.fall[key].name + '</p>';
+                    html += '<p>' + year.fall[key].id + '</p>';
+                }
+                html += '</div>';
+				
+				html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Spring</div>';
+                for (let key in year.spring) {
+                    html += '<p>' + year.spring[key].id + '</p>';                
                 }
                 html += '</div>';
                 
                 html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Summer</div>';
                 for (let key in year.summer) {
-                    html += '<p>' + year.summer[key].name + '</p>';                
-                }
-                html += '</div>';
-                
-                html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Spring</div>';
-                for (let key in year.spring) {
-                    html += '<p>' + year.spring[key].name + '</p>';                
+                    html += '<p>' + year.summer[key].id + '</p>';                
                 }
                 html += '</div>';
             
@@ -97,24 +85,24 @@ class Year {
 }
 
 class Course {
-    constructor(id, name, term, year) {
+    constructor(id, term, year) {
         this.id           = id;
-        this.name         = name;
         this.term         = term;
         this.year 		  = year;
     }
 }
 
-class Plan {
-    constructor(planName, catalogYear, major, studentName, currentSemester) {
-        this.name            = planName;
-        this.catalogYear     = catalogYear;
+class Plan {	
+    constructor(name, student, major, currentYear, catalogYear, currentTerm, courses) {
+        this.name            = name;
+		this.student         = student;
         this.major           = major;
-        this.studentName     = studentName;
-        this.currentSemester = currentSemester;
+		this.catalogYear     = catalogYear;
+        this.currentYear     = currentYear;
+		this.currentTerm     = currentTerm;
         this.numberOfCourses = 0;
         this.years           = {};
-        this.courses         = {};
+        this.courses         = courses;
     }
     
     addCourse(id, name, term, calendarYear, pos) {
@@ -123,12 +111,12 @@ class Plan {
     }
 	
 	convertYears() {		
-		for (var key in this.courses) {
-			var course = this.courses[key];
+		for (let key in this.courses) {
+			let course = this.courses[key];
 			if (course.term === 'Fall' && this.years[course.year] === undefined) {
 				console.log('Year: ' + parseInt(course.year) + ' added!');
 				this.years[course.year] = new Year(course.year);
-			} else if (this.years[course.year - 1] === undefined) {
+			} else if (course.term !== 'Fall' && this.years[course.year - 1] === undefined) {
 				this.years[course.year - 1] = new Year(course.year - 1);
 			}
 			
