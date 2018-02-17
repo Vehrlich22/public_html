@@ -1,3 +1,7 @@
+$(document).ready(() => {
+	generatePlan();
+});
+
 function validateSubmission() {
     let sixteen = validateSixteen();
     let elephant = validateElephant();
