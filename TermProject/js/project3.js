@@ -1,8 +1,8 @@
 $(document).ready(() => {
-//	generatePlan();
 	$.getJSON('/~gallaghd/cs3220/termProject/getCombined.php', (data) => {
 		generatePlanFromExisting(data.plan);
 	});
+	$("#requirements-accordion").accordion();
 });
 
 function validateSubmission() {
