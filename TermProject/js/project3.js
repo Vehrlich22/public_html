@@ -27,6 +27,10 @@ buildYears() {
 }
 */
 
+$(document).ready(() => {
+	generatePlan();
+});
+
 function validateSubmission() {
     var sixteen = validateSixteen();
     var elephant = validateElephant();
