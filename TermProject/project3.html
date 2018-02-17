@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 	<html>
         <head>
-            <link rel="stylesheet" type="text/css" href="css/project2.css">
-            <script src="js/project2.js"></script>
+            <link rel="stylesheet" type="text/css" href="css/project3.css">
+            <script src="js/project3.js"></script>
         </head>
 	
 		<body onload="generatePlan()">
@@ -17,8 +17,8 @@
                         <button class="projects_button">Projects</button>
                         <div class="projects_list">
                             <a href="../project1.html">Project 1</a>
-                            <a class="active" href="../project2.html">Project 2</a>
-                            <a href="../project3.html">Project 3</a>
+                            <a href="../project2.html">Project 2</a>
+                            <a href="../project3.html" class="active">Project 3</a>
                             <a href="../project4.html">Project 4</a>
                             <a href="../project5.html">Project 5</a>
                             <a href="../project6.html">Project 6</a>
@@ -30,20 +30,8 @@
 				
                 <div class="requirements">
                     <div class="header" align="center">Requirements</div>
-                    <div class="section" id="form_section">
-                        <div class="title" align="left">College Readiness Test </div>
-                        <div class="divider"></div>
-                        
-                        <p class="question">What is 2^4?</p>
-                        <input type="text" size=2 id="sixteen" value="" onchange="validateSixteen()" onsubmit="validateSixteen()"></input>
-                        <p class="error" id="sixteen_error"></p>
-                        <p class="question">How do you spell elephant?</p>
-                        <input type="text" size=8 id="elephant" value="" onchange="validateElephant()" onsubmit=="validateElephant()"></input>
-                        <p class="error" id="elephant_error"></p>
-                        <p class="question">What is 911's phone number?</p>
-                        <input type="text" size=3 id="911" value="" onchange="validate911()" onsubmit="validate911()"></input>
-                        <p class="error" id="911_error"></p>
-                        <input type="submit" id="submit_form" value="Submit" onclick="validateSubmission()"/>
+                    <div class="section">
+                        <!-- this needs to be a JQueryUI Accordion -->
                     </div>
                 </div>
                 
