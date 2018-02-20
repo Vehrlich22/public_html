@@ -1,9 +1,20 @@
+var catalog;
+var plan = 'myplan';
+
 $(document).ready(() => {
-	setupRequirementsAccordion();
-	$.getJSON('getCombined.txt', (data) => {
-		generatePlanFromExisting(data.plan);
-	});
+	doSetupStuff();
 });
+
+function doSetupStuff() {
+	// TODO: Change this path to pull from Dr. G's endpoint
+	$.getJSON('getCombined.txt', data => {
+		this.catalog = data.catalog;
+		this.plan = data.plan;
+		
+		generatePlanFromExisting(this.plan);
+		setupRequirementsAccordion();
+	});
+}
 
 function setupRequirementsAccordion() {
 	$.getJSON('requirements.txt', data => {
@@ -15,12 +26,17 @@ function setupRequirementsAccordion() {
 		for (let key in categories) {
 			let category = categories[key];
 			html += `<h3>${key}</h3>`;
-			html += '<div>';
+			html += '<div><ul>';
 			for (let course of category.courses) {
-				html += `<p>${course}</p>`;
+				let courseInfo = getInformationForCourse(course);
+				if (courseInfo !== undefined) {
+					html += `<li>${courseInfo.id} ${courseInfo.name}</li>`;
+				}
 			}
-			html += '</div>';
+			html += '</ul></div>';
 		}
+		
+		html += '</ul>';
 		
 		let requirementAccordion = $('#requirements-accordion');
 		requirementAccordion.append(html);
@@ -40,8 +56,6 @@ function generatePlanFromExisting(p) {
     for (var key in plan.years) {
         let year = plan.years[key];
         var nextYear = 1 + parseInt(key);
-		console.log(key);
-		console.log(nextYear);
         html += '<div class=\'section\'>';
             html += `<div class=\'year_header\' align=\'center\'>${key} - ${nextYear}</div>`;
             
@@ -72,7 +86,11 @@ function generatePlanFromExisting(p) {
     }
     
     planDiv.innerHTML = html;
-    console.log('Plan Generated!');
+}
+
+function getInformationForCourse(courseId) {
+	let course = this.catalog.courses[courseId];
+	return course;
 }
 
 class Year {
@@ -114,7 +132,6 @@ class Plan {
 		for (let key in this.courses) {
 			let course = this.courses[key];
 			if (course.term === 'Fall' && this.years[course.year] === undefined) {
-				console.log('Year: ' + parseInt(course.year) + ' added!');
 				this.years[course.year] = new Year(course.year);
 			} else if (course.term !== 'Fall' && this.years[course.year - 1] === undefined) {
 				this.years[course.year - 1] = new Year(course.year - 1);
