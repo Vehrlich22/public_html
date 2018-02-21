@@ -47,13 +47,33 @@ function setupSearchAutocomplete() {
 	}
 	
 	$('#course-search').on('change paste keyup', event => {
-		let searchCriteria = new RegExp(event.target.value, "i");
-		console.log(searchCriteria);
+		// Credit to https://stackoverflow.com/questions/3561493/is-there-a-regexp-escape-function-in-javascript/3561711#3561711
+		// for awesome escaping bit.
+		let escapedText = event.target.value.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&');
+		let searchCriteria = new RegExp(escapedText, 'i', 'u');
 		searchResults = $.grep(allCourses, course => {
 			return (course.id.search(searchCriteria) != -1) || (course.name.search(searchCriteria) != -1);
 		});
-		console.log(searchResults);
+		
+		updateSearchResults();
 	});
+}
+
+function updateSearchResults() {
+	let html = '';
+	for (let course of searchResults) {
+		html += '<div>';
+		html += makeDivWithContent(course.id);
+		html += makeDivWithContent(course.name);
+		html += makeDivWithContent(course.credits);
+		html += '</div>';
+	}
+	console.log(html);
+	$('#search-results').html(html);
+}
+
+function makeDivWithContent(content) {
+	return '<div>' + content + '</div>';
 }
 
 function setupRequirementsAccordion() {
