@@ -1,4 +1,9 @@
+html {
+	height: 100%;
+}
+
 body { 
+	height: 100%;
 	margin: 0 0;
 	padding: 0 0;
 	box-sizing: border-box;
@@ -38,6 +43,17 @@ ul.topnav li:nth-child(3) {
     border-right: none;
 }
 
+ul.topnav li:nth-child(5) {
+    border-right: none;
+	margin: 0px 0px;
+    display: block;
+    color: #333;
+    text-align: center;
+    padding: 5px 16px 0px 16px;
+	-webkit-text-stroke: 1px white;
+	font-size: 200%;
+}
+
 ul.topnav li a {
     display: block;
     color: white;
@@ -51,11 +67,11 @@ ul.topnav li a:hover:not(.active){
 }
 
 ul.topnav li div.projects {
-    background-color: #4CAF50;
+    background-color: #573772;
 }
 
 .active {
-    background-color: #4CAF50;
+    background-color: #573772;
 }
 
 ul.topnav li.right {
@@ -108,9 +124,21 @@ ul.topnav li.right {
 	display: flex;
 	flex-direction: column;
 	grid-area: requirements;
-	margin: 5px;
 	background: #aaaaaa;
-	color: white
+	margin: 5px;
+	color: white;
+}
+
+.requirements .header {
+	flex: 1;
+	border: 1px solid #7e7783;
+	text-align: left;
+    max-height: 20px;
+	background: #5f5964 url("images/ui-bg_highlight-soft_25_30273a_1x100.png") 50% 50% repeat-x;
+	font-weight: bold;
+	color: #ffffff;
+	margin: 0px 0px 0px 0px;
+	padding: 4px;
 }
 
 #plan {
@@ -184,27 +212,33 @@ img {
 
 .header {
 	flex: 1;
+	border: 1px solid #7e7783;
     max-height: 20px;
-	background: #1a472a;
-	color: white;
-	margin: 5px 5px 5px 5px;
+	background: #5f5964 url("images/ui-bg_highlight-soft_25_30273a_1x100.png") 50% 50% repeat-x;
+	font-weight: bold;
+	color: #ffffff;
+	margin: 0px 0px 0px 0px;
 	padding: 4px;
 }
 
 .year_header {
     flex: 1;
     max-height: 20px;
-	background: #2a623d;
-	color:white;
-	margin: opx;
+	border: 1px solid #7e7783;
+	background: #5f5964 url("images/ui-bg_highlight-soft_45_5f5964_1x100.png") 50% 50% repeat-x;
+	font-weight: bold;
+	color: #ffffff;
+	margin: 0px;
 	padding: 4px;
 }
 
 .term_header {
     flex: 1;
     max-height: 20px;
-	background: #2a623d;
-	color: white;
+	border: 1px solid #7e7783;
+	background: #5f5964 url("images/ui-bg_highlight-soft_45_5f5964_1x100.png") 50% 50% repeat-x;
+	font-weight: bold;
+	color: #ffffff;
 	margin: 5px 5px 0px 5px;
 	padding: 4px;
 }

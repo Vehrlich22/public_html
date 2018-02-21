@@ -181,15 +181,22 @@
 	display: block;
 	cursor: pointer;
 	position: relative;
-	margin: 2px 0 0 0;
-	padding: .5em .5em .5em .7em;
-	font-size: 100%;
+	margin: 0px 0 0 0;
+	padding: .25em .5em .25em .7em;
+	font-size: 80%;
 }
 .ui-accordion .ui-accordion-content {
-	padding: 1em 2.2em;
+	padding: 0em 0em;
 	border-top: 0;
 	overflow: auto;
+	font-size: 75%;
 }
+
+.ui-accordion-content ul {
+	padding: 0px 10px; 
+	margin-left: 5px;
+}
+
 .ui-autocomplete {
 	position: absolute;
 	top: 0;
@@ -697,7 +704,7 @@ button.ui-button::-moz-focus-inner {
 	padding-bottom: 1px;
 }
 .ui-selectmenu-menu .ui-menu .ui-selectmenu-optgroup {
-	font-size: 1em;
+	font-size: 0.5em;
 	font-weight: bold;
 	line-height: 1.5;
 	padding: 2px 0.4em;
