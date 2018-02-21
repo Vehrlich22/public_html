@@ -1,5 +1,7 @@
 var catalog;
 var plan = 'myplan';
+var searchResults;
+var allCourses;
 
 $(document).ready(() => {
 	doSetupStuff();
@@ -13,6 +15,44 @@ function doSetupStuff() {
 		
 		generatePlanFromExisting(this.plan);
 		setupRequirementsAccordion();
+		setupSearchAutocomplete();
+	});
+}
+
+function setupSearchAutocomplete() {
+	
+	/*
+	let searchTerms = [];
+	
+	for (let courseKey in this.catalog.courses) {
+		let course = this.catalog.courses[courseKey];
+		searchTerms.push({
+			label: course.id,
+			value: course.id
+		});
+		searchTerms.push({
+			label: course.name,
+			value: course.id
+		});
+	}
+	$('#course-search').autocomplete({
+		source: searchTerms,
+		autofocus: true
+	});
+	*/
+	allCourses = [];
+	for (let courseKey in this.catalog.courses) {
+		let course = this.catalog.courses[courseKey];
+		allCourses.push(course);
+	}
+	
+	$('#course-search').on('change paste keyup', event => {
+		let searchCriteria = new RegExp(event.target.value, "i");
+		console.log(searchCriteria);
+		searchResults = $.grep(allCourses, course => {
+			return (course.id.search(searchCriteria) != -1) || (course.name.search(searchCriteria) != -1);
+		});
+		console.log(searchResults);
 	});
 }
 
