@@ -62,24 +62,19 @@ function generatePlanFromExisting(p) {
             html += '<div class=\'divider\'></div>';
             
             html += '<div class=\'terms\'>';
-            
-                html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Fall</div>';
-                for (let key in year.fall) {
-                    html += '<p>' + year.fall[key].id + '</p>';
-                }
-                html += '</div>';
-				
-				html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Spring</div>';
-                for (let key in year.spring) {
-                    html += '<p>' + year.spring[key].id + '</p>';                
-                }
-                html += '</div>';
-                
-                html += '<div class=\'term\'><div class=\'term_header\' align=\'center\'>Summer</div>';
-                for (let key in year.summer) {
-                    html += '<p>' + year.summer[key].id + '</p>';                
-                }
-                html += '</div>';
+			
+			let terms = [year.fall, year.spring, year.summer];
+			let termNames = ['Fall', 'Spring', 'Summer'];
+			
+			for (let i = 0; i < terms.length; i++) {
+				html += `<div class=\'term\'><div class=\'term_header\' align=\'center\'>${termNames[i]}</div>`;
+				let currentTerm = terms[i];
+				for (let course in currentTerm) {
+					let courseInfo = getInformationForCourse(currentTerm[course].id);
+					html += '<p>' + courseInfo.id + ' ' + courseInfo.name + '</p>';
+				}
+				html += '</div>';
+			}
             
             html += '</div>'; 
         html += '</div>';
