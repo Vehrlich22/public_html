@@ -8,7 +8,6 @@ $(document).ready(() => {
 });
 
 function doSetupStuff() {
-	// TODO: Change this path to pull from Dr. G's endpoint
 	$.getJSON('/~gallaghd/cs3220/termProject/getCombined.php', data => {
 		this.catalog = data.catalog;
 		this.plan = data.plan;
@@ -108,8 +107,6 @@ function setupRequirementsAccordion() {
 		let categories = data.categories;
 		let html = '';
 		
-		// TODO: Build this as an unordered list
-		//       and get course info from catalog.
 		for (let key in categories) {
 			let category = categories[key];
 			html += `<h3>${key}</h3>`;
