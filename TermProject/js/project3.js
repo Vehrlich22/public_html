@@ -8,6 +8,8 @@ $(document).ready(() => {
 });
 
 function doSetupStuff() {
+	$('#search-table').DataTable();
+	
 	$.getJSON('/~gallaghd/cs3220/termProject/getCombined.php', data => {
 		this.catalog = data.catalog;
 		this.plan = data.plan;

@@ -215,20 +215,6 @@ img {
 	padding: 0px 8px;
 }
 
-#search-results {
-	max-height: 100%;
-	display: block;
-	overflow-y: auto;
-	color: #555555;
-	padding: 0 10px;
-}
-
-#search-results>div {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-}
-
 .header {
 	flex: 1;
 	border: 1px solid #7e7783;
