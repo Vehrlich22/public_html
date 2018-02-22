@@ -40,11 +40,11 @@
             
                 <div class="status">
                     <div class="header" align="center">Validation Status</div>
-                    <label for="kbb-year">Select Year</label>
+                    <label for="kbb-year">Select Model Year</label>
                     <select name="kbb-year" id="kbb-year"></select>
-                    <label for="kbb-make">Select Make</label>
+                    <label for="kbb-make">Select Model Year</label>
                     <select name="kbb-make" id="kbb-make"></select>
-                    <label for="kbb-model">Select Model</label>
+                    <label for="kbb-model">Select Model Year</label>
                     <select name="kbb-model" id="kbb-model"></select>
                 </div>
                 
